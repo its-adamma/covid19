@@ -1,0 +1,193 @@
+#Welcome user
+print("𝓦 𝓮𝓵𝓬𝓸𝓶𝓮 𝓽𝓸 𝓽𝓱𝓮 𝓜 𝓪𝓼𝓴 𝓞𝓪𝓴𝓵𝓪𝓷𝓭 𝓓𝓪𝓽𝓪𝓫𝓪𝓼𝓮\n")
+
+contact_name = []
+contact_number = []
+contact_address = []
+
+#Define menu function
+def menu():
+  global user_input
+  if len(contact_name) <= 0:
+    print("There are currently no contacts\n")
+    print("• For hosptial or organiations in need, type '𝐍'\n• For interest in volunteering, type '𝐕'")
+		
+  elif len(contact_name) > 0:
+    print("There is currently", len(contact_name), "contact(s)")
+    print("\n• For hosptial or organiations in need, type '𝐍'")
+    print("\nFor interest in volunteering, type '𝐕'")
+    print("To delete submission type 'delete'")
+    print("To search contacts type 'S'")
+    print("To view Menu type 'M'")
+    
+  if len(contact_name) == 0:
+    while True:
+      user_input = input("\nSelection:")
+      user_input = user_input.lower()
+      if user_input == "n" or "v":
+        break
+      else:
+        print("⚠️ Oops! Not a vaild command. Please try again.")
+  
+  if len(contact_name) > 0:
+    while True:
+      user_input = input("Please type a listed command:")
+      user_input = user_input.lower()
+      if user_input == "n" or "contacts" or "delete" or "search" or "menu" or "v":
+        break
+      else:
+        print("⚠️ Oops! Not a vaild command. Please try again.")
+    
+# Need function for hosiptals and organizations
+def need():
+  user_input_add_name = input("\nPlease enter hospital or organizaton name:\n• ")
+  contact_name.append(user_input_add_name)
+  while True:
+    user_input_add_number = input("\nPlease enter phone number:\n• ")
+    if user_input_add_number.isdigit() == True and len(user_input_add_number) == 10:
+      contact_number.append(user_input_add_number)
+      break
+    else:
+      print("⚠️ Oops! Please enter 10 digits")
+  while True:
+    user_input_add_email = input("\nPlease enter email address:\n• ")
+    if "@" and "." in user_input_add_email:
+      contact_address.append(user_input_add_email)
+      break
+    else:
+      print("⚠️ Oops! Please enter a vaild email address")
+
+# volunteer function
+def volunteer():
+  user_input_add_name = input("\nPlease enter full name:\n• ")
+  contact_name.append(user_input_add_name)
+  while True:
+    user_input_add_number = input("\nPlease enter phone number:\n• ")
+    if user_input_add_number.isdigit() == True and len(user_input_add_number) == 10:
+      contact_number.append(user_input_add_number)
+      break
+    else:
+      print("⚠️ Oops! Please enter 10 digits")
+  while True:
+    user_input_add_email = input("\nPlease enter email address:\n• ")
+    if "@" and "." in user_input_add_email:
+      contact_address.append(user_input_add_email)
+      break
+    else:
+      print("⚠️ Oops! Please enter a vaild email address")
+			
+#Define quiz function to assess user's COVID-19 mask knowledge	
+def quiz():	
+	correct = 0
+	questions = 4
+
+	print("\n\nPlease complete a brief COVID-19 Knowledge Assessment 📋\n\n")
+
+	#Question 1
+	print("𝐌 𝐚𝐬𝐤𝐬 𝐨𝐧𝐥𝐲 𝐡𝐞𝐥𝐩 𝐢𝐟 𝐬𝐨𝐦𝐞𝐨𝐧𝐞 𝐡𝐚𝐬 𝐬𝐲𝐦𝐩𝐭𝐨𝐦𝐬 \n")
+	print("a. True") 
+	print("b. False")
+	answer = input(">")
+
+	if answer == "b":
+		correct += 1
+		print("Correct!✅\n")
+	else:
+		print("Incorrect.❌\n")
+		
+	print("\n💡 : Carriers of COVID-19 may be asympomatic, meaning they show zero sign of infection. Masks help us prevent infection accidental spread.\n\n")
+
+	#Question 2
+	print("𝟐) 𝐌 𝐚𝐬𝐤𝐬 𝐜𝐚𝐮𝐬𝐞 𝐬𝐞𝐥𝐟 𝐜𝐨𝐧𝐭𝐚𝐦𝐢𝐧𝐚𝐭𝐢𝐨𝐧:")
+	print("a. True") 
+	print("b. False")
+
+	answer = input(">")
+
+	if answer == "a" or "b":
+		correct += 1
+		print("Correct!✅\n")
+		
+	print("\n💡 :  Myth and fact.c Masks can become contaminated on the outside surface. If handled without great hand hygiene, one could contaminate themselves. However, wearing a mask after you’ve been exposed won't increase your level of infection.\n\n")
+
+	#Question 3
+	print("𝟑) 𝐀 𝐥𝐥 𝐨𝐟 𝐭𝐡𝐞 𝐟𝐨𝐥𝐥𝐨𝐰𝐢𝐧𝐠 𝐚𝐫𝐞 𝐭𝐫𝐮𝐞 𝐚𝐛𝐨𝐮𝐭 𝐰𝐞𝐚𝐫𝐢𝐧𝐠 𝐦𝐚𝐬𝐤𝐬 𝐞𝐱𝐜𝐞𝐩𝐭: \n")
+	print("""a. Masks should be adjusted as necessary to protect one's face
+	b. Masks should cover one's mouth AND nose
+	c. Social distancing should still be practiced when wearing a face mask
+	""")
+	answer = input(">")
+
+	if answer == "a":
+		correct += 1
+		print("Correct!✅\n")
+	else:
+		print("Incorrect.❌\n")
+		
+	print("\n💡 : While it's important to make sure one's mask fits snugly, touching or adjusting it once it's on can cause contamination.\n\n")
+
+	#Question 4
+	print("\n𝟒) 𝐏𝐞𝐨𝐩𝐥𝐞 𝐨𝐟 𝐚𝐥𝐥 𝐚𝐠𝐞𝐬 𝐬𝐡𝐨𝐮𝐥𝐝 𝐰𝐞𝐚𝐫 𝐟𝐚𝐜𝐞 𝐦𝐚𝐬𝐤𝐬: \n")
+	print("a. True") 
+	print("b. False")
+
+	answer = input(">")
+
+	if answer == "a" or "b":
+		correct += 1
+		print("Correct!✅\n")
+
+	print("\n💡 : Masks are not advised for young children under the age of two.\n\n")
+
+#Load progress bar
+	from time import sleep
+	import sys
+
+	for i in range(21):
+			sys.stdout.write('\r')
+			# the exact output you're looking for:
+			sys.stdout.write("[%-20s] %+3s%%" % ('='*i, 5*i))
+			sys.stdout.flush()
+			sleep(0.2)
+	print("\n")
+		
+# Shows user assessment results, 75% needed to pass
+	grade = round(correct/questions*100)
+	print("Assessment Complete\n")
+	print("You received a {}%".format(grade))
+
+	if grade < 75:
+		print ("Sorry, please try again.")
+	else:
+		print("\nThank you for your interest. We will be in contact soon.\n")
+		print("- 𝓜 𝓪𝓼𝓴 𝓞𝓪𝓴𝓵𝓪𝓷𝓭")		
+
+# contacts (view) function
+def contacts():
+  if len(contact_name) <= 0:
+    menu()
+  if len(contact_name) > 0:
+    print("Name: ",contact_name)
+    print("Phone Number: ", contact_number)
+    print("Email: ",contact_address)
+
+#Print initial menu
+#then show Need or Volunteer funcation depending on user's entry 
+
+menu()
+
+if user_input == "contacts":
+  contacts()
+  user_input = ""
+  menu()
+
+elif user_input == "n":
+  need()
+  user_input = ""
+  menu()
+
+elif user_input == "v":
+  volunteer()
+  user_input = ""
+  quiz()
+
